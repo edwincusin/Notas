@@ -1,20 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {ListGrade } from './app/screens/ListGrades';
+import {GradeForm } from './app/screens/GradeForm';
+
 
 export default function App() {
+  const StackGrades = createNativeStackNavigator();
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <StackGrades.Navigator>    
+        <StackGrades.Screen  name='ListGrades' component={ListGrade}/>
+        <StackGrades.Screen  name='GradeFormNav' component={GradeForm}/>  
+      </StackGrades.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
